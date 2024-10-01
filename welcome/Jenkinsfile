@@ -15,7 +15,7 @@ pipeline {
                 git branch: 'jenkins-workshop', url: 'https://github.com/orco6/devopshift-welcome.git'
             }
         }
-    stage('Wait for User Approval') {
+    stage('Wait for User git URL') {
         steps {
             script {
                 // Wait for user input to get the Git URL
