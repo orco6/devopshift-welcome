@@ -12,9 +12,21 @@ pipeline {
         stage('Clone Flask Project') {
             steps {
                 // Use the Git plugin to clone the repository
-                git branch: 'jenkins-workshop', url: 'https://github.com/yanivomc/devopshift-welcome.git'
+                git branch: 'jenkins-workshop', url: 'https://github.com/orco6/devopshift-welcome.git'
             }
         }
+    stage('Wait for User Approval') {
+        steps {
+            script {
+                // Wait for user input to get the Git URL
+                def userInput = input message: 'Please enter the Git URL:',
+                                     parameters: [string(name: 'GIT_URL', defaultValue: '', description: 'Enter the Git repository URL')]
+                // Set the Git URL in an environment variable
+                env.GIT_URL = userInput
+            }
+        }
+    }
+
         stage('Wait for User Approval') {
             steps {
                 script {
