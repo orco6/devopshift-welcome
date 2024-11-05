@@ -18,7 +18,9 @@ productpage:
 service:
   type: LoadBalancer
   port: 80
-
+argoApplication:
+  prune: true
+  selfHeal: true
 resources: {}
 
 nodeSelector: {}
@@ -26,3 +28,4 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
